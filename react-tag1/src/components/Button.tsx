@@ -1,14 +1,18 @@
-type ButtonProps ={
+import type { ReactElement } from "react"
+
+type ButtonProps = {
     label: string, 
     action: () => void, 
     variant?: string
+    children?: ReactElement
 }
 
 const Button =(props:ButtonProps)=>{
 
-    const {label} = props
+    const {label, action, children} = props
+    const customLabel = label.length >= 1 ? label : "Click me"
     console.log("props in button", props)
-    return <button>{label}</button>
+    return <button onClick={action}>{children ? children : customLabel}</button>
 }
 
 export default Button

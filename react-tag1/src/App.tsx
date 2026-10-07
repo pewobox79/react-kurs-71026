@@ -5,22 +5,23 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 import Button from './components/Button'
 import LoginForm from './feature/Forms/LoginForm/LoginForm'
+import Users from './feature/Users/Users'
 
 export default function App() {
   const [count, setCount] = useState(0)
 
   const result = calc(2, 3)
-  function calc(num1:number, num2:number){
+  function calc(num1: number, num2: number) {
     return num1 + num2
   }
 
- 
+
   console.log("result", result)
 
-/**
- * ldjflkdj
- * alkjdfl
- */
+  /**
+   * ldjflkdj
+   * alkjdfl
+   */
   return (
     <>
       <section id="center">
@@ -30,18 +31,25 @@ export default function App() {
           <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
+        <Users />
         <div>
           <h1>Get started</h1>
-          <Button 
-            label="Submit" 
-            action={()=>alert("Submit Clicked")}
-            variant="primary"/>
-          
-          <Button 
-            label="Cancel" 
+          <Button
+            label="Submit"
+            action={() => alert("Submit Clicked")}
+            variant="primary" />
+
+          <Button
+            label=""
             action={() => alert("Cancel Clicked")}
-            />
-          <LoginForm/>
+          >
+            <>
+              <h1>Kind</h1>
+              <p>paragraph</p>
+            </>
+          </Button>
+
+          <LoginForm />
           <p>
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>
