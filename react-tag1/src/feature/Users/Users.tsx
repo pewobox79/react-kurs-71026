@@ -8,7 +8,8 @@ export default function Users(){
 
     const UserList = usersData.map(user => {
 
-        const myObj = {...user, label: "hallo"}
+        const obj2 = {weight: 100}
+        const myObj = {...user, ...obj2,  label: "hallo"}
         return <UserItem key={user.id} {...myObj}>
             <UserAddress/>
             </UserItem>

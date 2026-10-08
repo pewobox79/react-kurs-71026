@@ -1,10 +1,10 @@
-import type { ReactElement } from "react"
+import type { ReactNode } from "react"
 
 type ButtonProps = {
     label: string, 
     action: () => void, 
     variant?: string
-    children?: ReactElement
+    children?: ReactNode
 }
 
 const Button =(props:ButtonProps)=>{
