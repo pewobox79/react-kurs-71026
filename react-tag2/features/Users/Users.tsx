@@ -1,15 +1,18 @@
 'use client'
 import { ReactNode, useEffect, useState } from "react"
 import UserItem, { UserItemProps } from "./UserItem"
+import { useFetch } from "@/hooks/useFetch"
 
 
 export default function Users({ children }: { children: ReactNode }) {
     console.log("users feature, vor effect")
 
     const [state, setState] = useState(false)
-    const [users, setUsers] = useState<UserItemProps[]>([])
+    //const [users, setUsers] = useState<UserItemProps[]>([])
 
-    useEffect(() => {
+    const {data, error, isLoading} = useFetch('https://jsonplaceholder.typicode.com/users', "GET")
+    const users = data as UserItemProps[]
+   /*  useEffect(() => {
         console.log("effect runs...")
 
         const effectRoot = document.getElementById("effectRoot")
@@ -28,15 +31,21 @@ export default function Users({ children }: { children: ReactNode }) {
             h1.remove()
         }
 
-    }, [state])
+    }, [state]) */
+    console.log("nach effect....", users)
+
+    if (isLoading) {
+        return <h1>User list ist loading...</h1>
+    }
+
+    if (error) {
+        return <div>{JSON.stringify(error)}</div>
+    }
 
     const UserList = users.map(user => {
         const myObj = { ...user }
         return <UserItem key={user.id} {...myObj} />
     })
-
-    console.log("nach effect....", users)
-
     return <section id="users-feature">
         <div>
             <button onClick={() => setState(!state)}>click</button>
