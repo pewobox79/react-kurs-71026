@@ -6,9 +6,10 @@ import { useContext } from "react";
 export default function Navigation(){
 
     const authContext = useContext(AuthContext)
+    console.log("authc", authContext)
     function handleLogout(){
         console.log("logout triggers")
-        authContext?.setIsLoggedIn(false)
+        authContext?.setUser({...authContext.user, isLoggedIn: false})
     }
     return <nav className="min-h-20 flex justify-between">
        <div className="flex">

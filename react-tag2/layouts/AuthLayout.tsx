@@ -5,9 +5,9 @@ import { AuthContext } from "@/context/authContext"
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState({username: "", password: "", isLoggedIn: false});
     
-    return <AuthContext value={{ isLoggedIn, setIsLoggedIn }}>
+    return <AuthContext value={{ user, setUser }}>
         <div className="border-3">
             {children}
         </div>

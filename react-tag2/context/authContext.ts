@@ -1,7 +1,12 @@
 import { createContext } from "react";
 
-type AuthContextTypes = {
+type UserType = {
+    username: string,
+    password: string
     isLoggedIn: boolean,
-    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 }
-export const AuthContext = createContext<AuthContextTypes| null>(null)
+type AuthContextTypes = {
+    user: UserType
+    setUser: React.Dispatch<React.SetStateAction<UserType>>
+} 
+export const AuthContext = createContext<AuthContextTypes | null>(null)

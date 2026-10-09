@@ -9,11 +9,12 @@ export default function Users({ children }: { children: ReactNode }) {
     console.log("users feature, vor effect")
 
     const authContext = useContext(AuthContext)
-    const [state, setState] = useState(false)
+
     //const [users, setUsers] = useState<UserItemProps[]>([])
 
     function changeLoggedInState(){
-        authContext?.setIsLoggedIn(!authContext.isLoggedIn)
+        authContext?.setUser({ ...authContext.user, isLoggedIn: !authContext.user.isLoggedIn
+})
     }
     const { data, error, isLoading } = useFetch('https://jsonplaceholder.typicode.com/users', "GET")
     const users = data as UserItemProps[]

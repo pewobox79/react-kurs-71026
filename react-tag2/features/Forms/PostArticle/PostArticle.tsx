@@ -59,7 +59,7 @@ export default function PostArticle() {
         setFormData(INIT_VALUE)
     }
 
-    if(!authContext?.isLoggedIn){
+    if(!authContext?.user.isLoggedIn){
         return <h1>du darfst nicht!</h1>
     }
     return <section>
