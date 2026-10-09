@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react"
+import styles from '../../styles/Users.module.css'
 
 type UserItemProps = {
     name: string
@@ -8,6 +9,7 @@ type UserItemProps = {
 }
 
 export default function UserItem({ name, age, height, children }: UserItemProps) {
+    console.log("styles", styles)
 console.log("useritem rendered...", name)
     const [read, setRead] = useState<boolean>(false)
 
@@ -24,7 +26,10 @@ console.log("useritem rendered...", name)
     }
 
     console.log("read out function", read)
-    return <div style={inlineStyle}>
+
+    const myStyle = `${styles.border} ${styles["userItemWrapper"]} ${read ? styles.readStyling: ""}`
+    
+    return <div className={myStyle}>
         <p>Name: {name} </p>
         <p>Alter: {age} Jahre </p>
         <p>Größe: {height} cm </p>

@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { AuthContext } from "@/context/authContext"
+import { useContext, useState } from "react"
 
 export type UserItemProps = {
     username: string
@@ -10,10 +11,12 @@ export type UserItemProps = {
 
 export default function UserItem({ username,email, website }: UserItemProps) {
 
+    const authContext = useContext(AuthContext)
+
+    console.log("context", authContext)
     const [read, setRead] = useState<boolean>(false)
     function handleRead() {
         setRead(!read)
-        console.log("read inner func", read, name)
     }
 
     const inlineStyle = {

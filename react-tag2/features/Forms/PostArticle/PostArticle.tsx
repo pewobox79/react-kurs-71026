@@ -1,16 +1,18 @@
 'use client'
 
-import { useState } from "react"
+import { AuthContext } from "@/context/authContext"
+import { useContext, useState } from "react"
 
 type FormTypes = {
     title: string
     body: string
 }
 export default function PostArticle() {
+    const authContext = useContext(AuthContext)
 
     const INIT_VALUE = { title: "", body: "", userId: 1 }
     const [formData, setFormData] = useState<FormTypes>(INIT_VALUE)
-    const [status, setStatus] = useState<{ success: boolean, isSending: boolean, error: boolean, response?: { title: string, body: string } }>({ success: false, isSending: false, error: false })
+    const [status, setStatus] = useState<{ success: boolean, isSending: boolean, error: boolean, response?: FormTypes }>({ success: false, isSending: false, error: false })
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         //sammelt input inhalte in formData
@@ -45,7 +47,7 @@ export default function PostArticle() {
     }
 
 
-    function handleSubmit(event: React.SubmitEvent<HTMLInputElement>) {
+    function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         //finale daten an api schicken
         setStatus({ ...status, isSending: true })
         event.preventDefault()
@@ -57,6 +59,9 @@ export default function PostArticle() {
         setFormData(INIT_VALUE)
     }
 
+    if(!authContext?.isLoggedIn){
+        return <h1>du darfst nicht!</h1>
+    }
     return <section>
         <h2>Mein Neuer Artikel</h2>
         {status.isSending && <h1>artikel wird übermittelt</h1>}

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
-import './App.css'
 import Button from './components/Button'
 import LoginForm from './feature/Forms/LoginForm/LoginForm'
 import Users from './feature/Users/Users'
@@ -23,7 +22,7 @@ export default function App() {
    * alkjdfl
    */
   return (
-    <>
+    <div className='body'>
       <section id="center">
         {/* <!-- comment js --> */}
         <div className="hero">
@@ -148,6 +147,6 @@ export default function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
+    </div>
   )
 }
